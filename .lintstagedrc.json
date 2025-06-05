@@ -2,8 +2,5 @@
   "*.{js,jsx,ts,tsx}": [
     "eslint --fix",
     "eslint"
-  ],
-  "*.{json,md,yml}": [
-    "prettier --write"
   ]
 }
