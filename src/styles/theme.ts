@@ -2,39 +2,33 @@ import { createTheme } from "@mui/material";
 
 const theme = createTheme({
   palette: {
-    mode: "dark",
     primary: {
-      main: "#CBA135",
-      dark: "#A67C00",
-      light: "#FFD36D",
+      main: "#2D545E",
+      dark: "#1E3A42",
+      light: "#3D6E7A",
+      contrastText: "#FFFFFF",
     },
     secondary: {
-      main: "#4B2E39",
+      main: "#F5D5CB",
+      light: "#F9E8E2",
+      dark: "#E1B8A8",
+      contrastText: "#2D545E",
     },
     background: {
-      default: "#121212",
-      paper: "#1E1E1E",
+      default: "#FFFFFF",
+      paper: "#E0E0E0",
     },
     text: {
-      primary: "#FFFFFF",
-      secondary: "#CCCCCC",
+      primary: "#2D545E",
+      secondary: "#6D6D6D",
     },
-    divider: "#333333",
+    divider: "#E0E0E0",
   },
   typography: {
     fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontFamily: '"Playfair Display", serif',
-    },
-    h2: {
-      fontFamily: '"Playfair Display", serif',
-    },
-    h3: {
-      fontFamily: '"Playfair Display", serif',
-    },
     button: {
       textTransform: "none",
-      fontWeight: 600,
+      fontWeight: 500,
     },
   },
   shape: {

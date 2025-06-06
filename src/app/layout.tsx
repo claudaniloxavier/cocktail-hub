@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Providers from "@/providers";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
+
+import Layout from "@/components/commons/Layout";
 
 import "@/styles/globals.css";
 
-const roboto = Roboto({
+const inter = Inter({
   variable: "--font-primary",
   subsets: ["latin"],
 });
@@ -20,9 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${roboto.variable}`}>
-        <Providers>{children}</Providers>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable}`}>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
       </body>
     </html>
   );
