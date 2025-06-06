@@ -15,12 +15,13 @@ const theme = createTheme({
       contrastText: "#2D545E",
     },
     background: {
-      default: "#FFFFFF",
-      paper: "#E0E0E0",
+      default: "#F2F2F2",
+      paper: "#FFFFFF",
     },
     text: {
       primary: "#2D545E",
       secondary: "#6D6D6D",
+      disabled: "#E0E0E0",
     },
     divider: "#E0E0E0",
   },

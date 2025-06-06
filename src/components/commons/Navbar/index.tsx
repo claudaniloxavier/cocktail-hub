@@ -17,8 +17,8 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
-import PersonIcon from "@mui/icons-material/PersonOutlined";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
+import PersonIcon from "@/components/commons/Icons/Person";
+import ShoppingCartIcon from "@/components/commons/Icons/ShoppingCart";
 
 import { MENU_ITEMS } from "@/utils/constants";
 
@@ -36,9 +36,12 @@ export default function Navbar() {
     <AppBar
       position="sticky"
       elevation={0}
-      sx={{ backgroundColor: theme.palette.background.default }}
+      sx={{
+        backgroundColor: theme.palette.background.paper,
+        borderRadius: "999px",
+      }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" disableGutters>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Typography variant="h6" noWrap color="text.primary">
@@ -50,7 +53,6 @@ export default function Navbar() {
             <Box
               sx={{
                 display: "flex",
-                gap: 4,
                 position: "absolute",
                 left: "50%",
                 transform: "translateX(-50%)",
@@ -64,6 +66,7 @@ export default function Navbar() {
                       cursor: "pointer",
                       fontWeight: "700",
                       fontSize: "14px",
+                      minWidth: "140px",
                       color: theme.palette.text.secondary,
                       "&:hover": {
                         color: theme.palette.primary.main,
@@ -78,15 +81,15 @@ export default function Navbar() {
           )}
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <IconButton color="default" aria-label="shopping cart">
-              <ShoppingCartIcon />
-            </IconButton>
-
             {!isMobile && (
               <IconButton color="default" aria-label="profile">
                 <PersonIcon />
               </IconButton>
             )}
+
+            <IconButton color="default" aria-label="shopping cart">
+              <ShoppingCartIcon />
+            </IconButton>
 
             {isMobile && (
               <IconButton color="default" onClick={toggleMobileMenu}>

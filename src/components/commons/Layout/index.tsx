@@ -1,23 +1,33 @@
 "use client";
 import Navbar from "@/components/commons/Navbar";
 import Footer from "@/components/commons/Footer";
-import { Container } from "@mui/material";
+import { Container, useTheme } from "@mui/material";
 
 export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = useTheme();
   return (
-    <main>
-      <Navbar />
+    <>
+      <Container
+        component="main"
+        sx={{
+          backgroundColor: theme.palette.background.default,
+          pt: 5,
+          pb: 10,
+        }}
+      >
+        <Navbar />
 
-      <Container sx={{ flex: 1 }} component="section">
-        {children}
+        <Container sx={{ flex: 1 }} component="section">
+          {children}
+        </Container>
       </Container>
 
       <Footer />
-    </main>
+    </>
   );
 }
 
