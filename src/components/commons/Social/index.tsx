@@ -1,10 +1,11 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import FacebookIcon from "@/components/commons/Icons/Facebook";
 import YoutubeIcon from "@/components/commons/Icons/Youtube";
 import SpotifyIcon from "@/components/commons/Icons/Spotify";
 import InstagramIcon from "@/components/commons/Icons/Instagram";
 
 export default function Social() {
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -18,27 +19,27 @@ export default function Social() {
       <Typography
         variant="h6"
         fontWeight="bold"
-        color="text.disabled"
+        color="primary.contrastText"
         sx={{ typography: { xs: "subtitle1", md: "h6" } }}
       >
         Follow us on social media:
       </Typography>
 
       <Box>
-        <IconButton>
-          <YoutubeIcon color="secondary" />
+        <IconButton sx={{ color: theme.palette.primary.contrastText }}>
+          <YoutubeIcon color="inherit" />
         </IconButton>
 
-        <IconButton>
-          <SpotifyIcon color="secondary" />
+        <IconButton sx={{ color: theme.palette.primary.contrastText }}>
+          <SpotifyIcon color="inherit" />
         </IconButton>
 
-        <IconButton>
-          <FacebookIcon color="secondary" />
+        <IconButton sx={{ color: theme.palette.primary.contrastText }}>
+          <FacebookIcon color="inherit" />
         </IconButton>
 
-        <IconButton>
-          <InstagramIcon color="secondary" />
+        <IconButton sx={{ color: theme.palette.primary.contrastText }}>
+          <InstagramIcon color="inherit" />
         </IconButton>
       </Box>
     </Box>

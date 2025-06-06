@@ -3,25 +3,37 @@ import { createTheme } from "@mui/material";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#2D545E",
-      dark: "#1E3A42",
-      light: "#3D6E7A",
+      main: "#9147FF",
+      dark: "#6A00F4",
+      light: "#AD7BFF",
       contrastText: "#FFFFFF",
     },
     secondary: {
-      main: "#F5D5CB",
-      light: "#F9E8E2",
-      dark: "#E1B8A8",
-      contrastText: "#2D545E",
+      main: "#00ADB5",
+      light: "#00E5D4",
+      dark: "#007F87",
+      contrastText: "#FFFFFF",
     },
     background: {
-      default: "#F2F2F2",
-      paper: "#FFFFFF",
+      default: "#FFFFFF",
+      paper: "#F7F7F8",
     },
     text: {
-      primary: "#2D545E",
-      secondary: "#6D6D6D",
+      primary: "#000000",
+      secondary: "#4A4A4A",
       disabled: "#E0E0E0",
+    },
+    error: {
+      main: "#FF33333",
+    },
+    warning: {
+      main: "#FF9C27",
+    },
+    info: {
+      main: "#0099FF",
+    },
+    success: {
+      main: "#2EB67D",
     },
     divider: "#E0E0E0",
   },
@@ -29,7 +41,7 @@ const theme = createTheme({
     fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
     button: {
       textTransform: "none",
-      fontWeight: 500,
+      fontWeight: 600,
     },
   },
   shape: {

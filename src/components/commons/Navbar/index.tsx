@@ -45,7 +45,7 @@ export default function Navbar() {
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Typography variant="h6" noWrap color="text.primary">
-              Logo here
+              GAMING HUB
             </Typography>
           </Box>
 

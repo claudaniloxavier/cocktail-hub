@@ -45,7 +45,7 @@ export default function Footer() {
         <Grid size={{ xs: 12, md: 6 }}>
           <Box>
             <Typography variant="body2" noWrap color="primary.contrastText">
-              Logo here
+              GAMING HUB
             </Typography>
           </Box>
         </Grid>
@@ -57,7 +57,7 @@ export default function Footer() {
 
       <Divider
         aria-hidden="true"
-        component="li"
+        component="div"
         variant="middle"
         sx={{ ml: 0, mr: 0, borderColor: theme.palette.text.disabled }}
       />
@@ -71,7 +71,7 @@ export default function Footer() {
           mt: 2,
         }}
       >
-        <Typography variant="body2" color="text.disabled">
+        <Typography variant="body2" color="primary.contrastText">
           Cocktail Drinks © {year}
         </Typography>
 
@@ -79,7 +79,7 @@ export default function Footer() {
           <Link href={link.href} key={link.href}>
             <Typography
               variant="body2"
-              color="text.disabled"
+              color="primary.contrastText"
               sx={{ textDecoration: "underline", textUnderlineOffset: 3 }}
             >
               • {link.label}
