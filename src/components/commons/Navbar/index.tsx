@@ -20,7 +20,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@/components/commons/Icons/Person";
 import ShoppingCartIcon from "@/components/commons/Icons/ShoppingCart";
 
-import { MENU_ITEMS } from "@/utils/constants";
+import { MENU_ITEMS } from "./constants";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
