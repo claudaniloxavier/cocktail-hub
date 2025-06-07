@@ -1,7 +1,8 @@
 "use client";
 import Navbar from "@/components/commons/Navbar";
 import Footer from "@/components/commons/Footer";
-import { Container, useTheme } from "@mui/material";
+import { Container, Box, useTheme } from "@mui/material";
+import { useEffect, useState } from "react";
 
 export default function Layout({
   children,
@@ -9,6 +10,16 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   const theme = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <>
       <Container
@@ -22,20 +33,12 @@ export default function Layout({
       >
         <Navbar />
 
-        <Container sx={{ flex: 1, pt: 7 }} disableGutters component="section">
+        <Box sx={{ flex: 1, pt: 7 }} component="section">
           {children}
-        </Container>
+        </Box>
       </Container>
 
       <Footer />
     </>
   );
 }
-
-// TODO
-// [] Create Footer Component
-// [] Create Item component
-// [] Create Social Media component
-// [] Navbar should show item name in details page when mobile
-// [] Use the correct icons
-// [] Test with suspense
