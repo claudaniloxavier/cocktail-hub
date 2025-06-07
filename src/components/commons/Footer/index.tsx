@@ -72,7 +72,7 @@ export default function Footer() {
         }}
       >
         <Typography variant="body2" color="primary.contrastText">
-          Cocktail Drinks © {year}
+          GAMING HUB © {year}
         </Typography>
 
         {COPYRIGHT_LINKS.map((link) => (

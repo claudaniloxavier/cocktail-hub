@@ -17,11 +17,12 @@ export default function Layout({
           backgroundColor: theme.palette.background.default,
           pt: 5,
           pb: 10,
+          flex: 1,
         }}
       >
         <Navbar />
 
-        <Container sx={{ flex: 1 }} component="section">
+        <Container sx={{ flex: 1, pt: 7 }} disableGutters component="section">
           {children}
         </Container>
       </Container>

@@ -1,14 +1,13 @@
 "use server";
 
-import { IGDB_BASE_URL, TWITCH_AUTH_URL } from "./constants";
+import { Game } from "@/types/game";
+import { IGDB_BASE_URL, TWITCH_AUTH_URL, GBA_PLATFORM_ID } from "./constants";
 
 let cachedToken: string | null = null;
 let tokenExpiration: number = 0;
 
 const getToken = async () => {
   const now = Date.now();
-
-  console.log("Fetching new token if needed...", process.env.TWITCH_CLIENT_ID);
 
   if (cachedToken && now < tokenExpiration) {
     return cachedToken;
@@ -20,16 +19,13 @@ const getToken = async () => {
     grant_type: "client_credentials",
   });
 
-  const res = await fetch(
-    `${TWITCH_AUTH_URL}/token?${queryParams.toString()}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      cache: "no-store",
-    }
-  );
+  const res = await fetch(`${TWITCH_AUTH_URL}?${queryParams.toString()}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    cache: "no-store",
+  });
 
   const data = await res.json();
 
@@ -54,21 +50,33 @@ const igdbFetch = async <T>(query: string, endpoint = "games"): Promise<T> => {
   });
 
   if (!res.ok) {
-    throw new Error(`IGDB API error: ${res.status} ${res.statusText}`);
+    console.error("IGDB API error:", res.status, res.statusText);
   }
 
   return res.json();
 };
 
-export const fetchGames = async (offset = 0, limit = 20) => {
-  return igdbFetch(
+export const fetchGames = async (offset = 0, limit = 20): Promise<Game[]> => {
+  return igdbFetch<Game[]>(
     `
-      fields id, name, cover.url, first_release_date, summary, rating, genres.name, platforms.name;
+      fields id, name, cover.url, summary, rating, genres.name, platforms.name;
       sort popularity desc;
+      where platforms = (${GBA_PLATFORM_ID});
       limit ${limit};
       offset ${offset};
     `
   );
+};
+
+export const fetchGamesCount = async (): Promise<number> => {
+  const res = await igdbFetch<{ count: number }>(
+    `
+      where platforms = (${GBA_PLATFORM_ID});
+    `,
+    "games/count"
+  );
+
+  return res.count;
 };
 
 export const fetchGameDetails = async (gameId: number) => {

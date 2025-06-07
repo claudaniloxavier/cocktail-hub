@@ -4,8 +4,8 @@ export const MENU_ITEMS = [
     label: "Home",
   },
   {
-    href: "/cocktails",
-    label: "Cocktails",
+    href: "/games",
+    label: "Games",
   },
   {
     href: "/about-us",
