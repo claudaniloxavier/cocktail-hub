@@ -1,7 +1,12 @@
 "use server";
 
 import { Game } from "@/types/game";
-import { IGDB_BASE_URL, TWITCH_AUTH_URL, GBA_PLATFORM_ID } from "./constants";
+import {
+  IGDB_BASE_URL,
+  TWITCH_AUTH_URL,
+  GBA_PLATFORM_ID,
+  SNES_PLATFORM_ID,
+} from "./constants";
 
 let cachedToken: string | null = null;
 let tokenExpiration: number = 0;
@@ -59,9 +64,9 @@ const igdbFetch = async <T>(query: string, endpoint = "games"): Promise<T> => {
 export const fetchGames = async (offset = 0, limit = 20): Promise<Game[]> => {
   return igdbFetch<Game[]>(
     `
-      fields id, name, cover.url, summary, rating, genres.name, platforms.name;
+      fields id, name, cover.url, summary, rating, platforms.slug, first_release_date;
       sort popularity desc;
-      where platforms = (${GBA_PLATFORM_ID});
+      where platforms = (${GBA_PLATFORM_ID}, ${SNES_PLATFORM_ID});
       limit ${limit};
       offset ${offset};
     `

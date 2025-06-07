@@ -7,10 +7,30 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { GBA_PLATFORM_ID, SNES_PLATFORM_ID } from "@/lib/igdb/constants";
 
-export default function GameCard() {
+import { Game } from "@/types/game";
+
+export default function GameCard({
+  cover,
+  name,
+  platforms,
+  rating,
+  first_release_date,
+}: Game) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const gameReleaseDate = first_release_date
+    ? new Date(first_release_date * 1000).getFullYear()
+    : "N/A";
+
+  const selectedPlatform = platforms?.find(
+    (p) => p.id === GBA_PLATFORM_ID || p.id === SNES_PLATFORM_ID
+  );
+
+  const formattedRating = rating ? `rat. ${Math.round(rating)}` : "Rating n/a";
+  const coverUrl = cover?.url.replace("t_thumb", "t_cover_big");
 
   return (
     <Card
@@ -20,22 +40,27 @@ export default function GameCard() {
         alignItems: "center",
         p: 2,
         border: "1px solid",
-        borderColor: "#f97316",
+        borderColor: theme.palette.divider,
         borderRadius: 1,
         boxShadow: 0,
-        maxWidth: isMobile ? "100%" : 240,
+        maxWidth: isMobile ? "100%" : 289,
+        maxHeight: isMobile ? 161 : 423,
+        height: "100%",
       }}
     >
       <CardMedia
         component="img"
-        image="/images/flocos.png" // substitua pelo caminho correto
-        alt="Sorvete Flocos"
+        image={coverUrl}
+        alt={name}
         sx={{
-          width: isMobile ? 60 : 120,
-          height: isMobile ? 60 : 160,
-          objectFit: "contain",
+          maxHeight: isMobile ? 96 : 256,
+          maxWidth: isMobile ? 96 : 256,
+          width: "100%",
+          height: "100%",
+          objectFit: "fill",
           mr: isMobile ? 2 : 0,
           mb: isMobile ? 0 : 2,
+          borderRadius: "8px",
         }}
       />
 
@@ -43,31 +68,57 @@ export default function GameCard() {
         sx={{
           p: 0,
           flex: 1,
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: isMobile ? "flex-start" : "center",
+          justifyContent: "space-between",
           textAlign: isMobile ? "left" : "center",
         }}
       >
-        <Typography variant="h6" fontWeight="bold">
-          Flocos
+        <Typography
+          variant="h6"
+          fontWeight="bold"
+          align="left"
+          title={name}
+          sx={{
+            color: theme.palette.text.secondary,
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 1,
+            overflow: "hidden",
+            display: "-webkit-box",
+            width: "100%",
+            lineHeight: "1.2",
+            cursor: "default",
+          }}
+        >
+          {name}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-          Not Co | Vegano | 2 Litros
+
+        <Typography
+          variant="caption"
+          align="left"
+          color="text.secondary"
+          sx={{ mb: 2, width: "100%", mt: isMobile ? 1 : 0 }}
+        >
+          {selectedPlatform?.slug?.toUpperCase()} | {gameReleaseDate} |{" "}
+          {formattedRating}
         </Typography>
+
         <Button
           variant="outlined"
           sx={{
-            borderColor: "#f97316",
-            color: "#000",
-            fontWeight: "bold",
-            textTransform: "none",
+            borderColor: theme.palette.primary.main,
+            borderRadius: "16px",
+            color: theme.palette.text.primary,
+            fontSize: "16px",
+            fontWeight: "600",
             px: 3,
-            py: 1,
+            py: 1.85,
+            width: "100%",
             alignSelf: isMobile ? "flex-start" : "center",
             "&:hover": {
-              borderColor: "#f97316",
-              backgroundColor: "#fff7ed",
+              color: theme.palette.primary.dark,
             },
           }}
         >

@@ -62,6 +62,33 @@ const theme = createTheme({
         },
       },
     },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          padding: "0",
+          "&:last-child": {
+            padding: "0",
+          },
+        },
+      },
+    },
+    MuiPagination: {
+      styleOverrides: {
+        root: {
+          "ul>li>button": {
+            borderRadius: "8px",
+            width: 56,
+            height: 56,
+            border: "none",
+
+            "&.Mui-selected": {
+              backgroundColor: "#DECAFF",
+              color: "#6A00F4",
+            },
+          },
+        },
+      },
+    },
   },
 });
 

@@ -3,7 +3,9 @@ type Genre = {
 };
 
 type Platform = {
-  name: string;
+  id: number;
+  name?: string;
+  slug?: string;
 };
 
 type Cover = {
@@ -17,4 +19,6 @@ export interface Game {
   cover?: Cover;
   genres?: Genre[];
   platforms?: Platform[];
+  rating?: number;
+  first_release_date: number;
 }
