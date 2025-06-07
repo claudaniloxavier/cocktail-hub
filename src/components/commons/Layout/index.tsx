@@ -38,3 +38,4 @@ export default function Layout({
 // [] Create Social Media component
 // [] Navbar should show item name in details page when mobile
 // [] Use the correct icons
+// [] Test with suspense

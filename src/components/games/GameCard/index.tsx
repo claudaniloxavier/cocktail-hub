@@ -5,8 +5,8 @@ import {
   Typography,
   Button,
   useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { GBA_PLATFORM_ID, SNES_PLATFORM_ID } from "@/lib/igdb/constants";
 
 import { Game } from "@/types/game";
@@ -114,7 +114,7 @@ export default function GameCard({
             fontSize: "16px",
             fontWeight: "600",
             px: 3,
-            py: 1.85,
+            py: 1.5,
             width: "100%",
             alignSelf: isMobile ? "flex-start" : "center",
             "&:hover": {
