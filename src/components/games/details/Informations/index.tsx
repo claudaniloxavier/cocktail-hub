@@ -14,7 +14,7 @@ export default function GameInformations({
         {mainInfo.map(({ label, value }) => (
           <Grid
             component="div"
-            key={`info-item-${value}`}
+            key={`info-item-${label}-${value}`}
             size={{ xs: 6, md: 3 }}
           >
             <InfoCard label={label} value={value} />

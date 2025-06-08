@@ -57,6 +57,7 @@ const igdbFetch = async <T>(query: string, endpoint = "games"): Promise<T> => {
 
   if (!res.ok) {
     console.error("IGDB API error:", res.status, res.statusText);
+    throw new Error("Not Found");
   }
 
   return res.json();

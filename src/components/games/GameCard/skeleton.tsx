@@ -10,26 +10,18 @@ export const GameCardSkeleton = () => {
     <Styled.SkeletonCard>
       <Skeleton
         variant="rectangular"
-        animation="wave"
         width={isMobile ? 96 : 232}
         height={isMobile ? 96 : 232}
       />
 
       <Box sx={{ flex: 1 }}>
         <Styled.SkeletonInfoBox>
-          <Skeleton variant="text" animation="wave" width={194} height={48} />
-          <Skeleton
-            variant="text"
-            animation="wave"
-            width={124}
-            height={24}
-            sx={{ mt: -1 }}
-          />
+          <Skeleton variant="text" width={194} height={48} />
+          <Skeleton variant="text" width={124} height={24} sx={{ mt: -1 }} />
         </Styled.SkeletonInfoBox>
 
         <Skeleton
           variant="rounded"
-          animation="wave"
           width={isMobile ? 198 : 232}
           height={isMobile ? 40 : 54}
         />
