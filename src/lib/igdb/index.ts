@@ -67,7 +67,7 @@ export const fetchGames = async (offset = 0, limit = 20): Promise<Game[]> => {
   return igdbFetch<Game[]>(
     `
       fields id, name, cover.url, summary, rating, platforms.slug, platforms.name, first_release_date;
-      sort popularity desc;
+      sort rating desc;
       where platforms = (${PS5_PLATFORM_ID}, ${PS4_PLATFORM_ID}, ${SWITCH_PLATFORM_ID});
       limit ${limit};
       offset ${offset};

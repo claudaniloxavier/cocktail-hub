@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchGames, fetchGamesCount } from "@/lib/igdb";
 import { Game } from "@/types/game";
 
-const QUERY_STALE_TIME = 1000 * 60 * 5; // 5 minutes
 const PAGE_SIZE = 12;
 
 interface useGamesResult {
@@ -21,13 +20,11 @@ export const useGames = (page: number = 1): useGamesResult => {
   const gamesQuery = useQuery<Game[], Error>({
     queryKey: ["games", page],
     queryFn: () => fetchGames(offset, PAGE_SIZE),
-    staleTime: QUERY_STALE_TIME,
   });
 
   const countQuery = useQuery<number, Error>({
     queryKey: ["games-count"],
     queryFn: fetchGamesCount,
-    staleTime: QUERY_STALE_TIME,
   });
 
   const totalCount = countQuery.data ?? 0;

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useGameDetails } from "@/hooks/useGameDetails";
 
 import {
   Box,
@@ -15,11 +16,13 @@ import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@/components/commons/Icons/Person";
 import ShoppingCartIcon from "@/components/commons/Icons/ShoppingCart";
+import ArrowLeftIcon from "../Icons/ArrowLeft";
 import Logo from "@/components/commons/Logo";
 
 import { MENU_ITEMS } from "./constants";
 
 import Styled from "./styles";
+import { useParams, usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -27,15 +30,45 @@ export default function Navbar() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const pathname = usePathname();
+  const params = useParams();
+  const { data } = useGameDetails(params.id as string);
+
+  const gameName = data && data[0].name;
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const isGameDetailPage = /^\/games\/[^/]+$/.test(pathname);
+  const renderLogoItem = () => {
+    if (isGameDetailPage && isMobile && gameName) {
+      return (
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <IconButton size="large" color="default" aria-label="profile">
+            <ArrowLeftIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            noWrap
+            color="text.primary"
+            fontWeight={700}
+            fontFamily="Archivo"
+          >
+            {gameName}
+          </Typography>
+        </Box>
+      );
+    }
+
+    return <Logo color="text.secondary" />;
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Styled.AppBar position="sticky" elevation={0}>
         <Styled.Toolbar>
-          <Logo color="text.secondary" />
+          {renderLogoItem()}
 
           {!isMobile && (
             <Styled.MenuItemsWrapper>
