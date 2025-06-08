@@ -6,7 +6,7 @@ import {
   SWITCH_PLATFORM_ID,
 } from "@/lib/igdb/constants";
 
-import { GameInformation } from "./types";
+import { GameInformation } from "../types";
 
 export function useBuildGameInformations(
   gameInfo: Game | undefined,
