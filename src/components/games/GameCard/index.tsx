@@ -1,20 +1,14 @@
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Button,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { useRouter } from "next/navigation";
+
+import { useMediaQuery, useTheme } from "@mui/material";
 import {
   PS4_PLATFORM_ID,
   PS5_PLATFORM_ID,
   SWITCH_PLATFORM_ID,
 } from "@/lib/igdb/constants";
-import { useRouter } from "next/navigation";
 
 import { Game } from "@/types/game";
+import Styled from "./styles";
 
 export default function GameCard({
   id,
@@ -32,7 +26,7 @@ export default function GameCard({
     ? new Date(first_release_date * 1000).getFullYear()
     : "N/A";
 
-  const selectedPlatform = platforms?.find(
+  const gameMainPlatform = platforms?.find(
     (p) =>
       p.id === PS5_PLATFORM_ID ||
       p.id === PS4_PLATFORM_ID ||
@@ -47,79 +41,28 @@ export default function GameCard({
   };
 
   return (
-    <Card
-      sx={{
-        display: "flex",
-        flexDirection: isMobile ? "row" : "column",
-        alignItems: "center",
-        p: 2,
-        border: "1px solid",
-        borderColor: theme.palette.divider,
-        borderRadius: 1,
-        boxShadow: 0,
-        maxWidth: isMobile ? "100%" : 289,
-        maxHeight: isMobile ? 161 : 423,
-        height: "100%",
-      }}
-    >
-      <CardMedia
-        component="img"
-        image={coverUrl}
-        alt={name}
-        sx={{
-          maxHeight: isMobile ? 96 : 256,
-          maxWidth: isMobile ? 96 : 256,
-          width: "100%",
-          height: "100%",
-          objectFit: "fill",
-          mr: isMobile ? 2 : 0,
-          mb: isMobile ? 0 : 2,
-          borderRadius: "8px",
-        }}
-      />
+    <Styled.GameCard>
+      <Styled.GameCardMedia component="img" image={coverUrl} alt={name} />
 
-      <CardContent
-        sx={{
-          p: 0,
-          flex: 1,
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: isMobile ? "flex-start" : "center",
-          justifyContent: "space-between",
-          textAlign: isMobile ? "left" : "center",
-        }}
-      >
-        <Typography
+      <Styled.GameCardContent>
+        <Styled.GameTitle
           variant="h6"
           fontWeight="bold"
           align="left"
           title={name}
-          sx={{
-            color: theme.palette.text.secondary,
-            WebkitBoxOrient: "vertical",
-            WebkitLineClamp: 1,
-            overflow: "hidden",
-            display: "-webkit-box",
-            width: "100%",
-            lineHeight: "1.2",
-            cursor: "default",
-          }}
         >
           {name}
-        </Typography>
+        </Styled.GameTitle>
 
-        <Typography
+        <Styled.GameSecondaryInfo
           variant="caption"
           align="left"
           color="text.secondary"
-          sx={{ mb: 2, width: "100%", mt: isMobile ? 1 : 0 }}
         >
-          {selectedPlatform?.slug?.toUpperCase()} | {gameReleaseDate} |{" "}
-          {formattedRating}
-        </Typography>
+          {gameMainPlatform?.name} | {gameReleaseDate} | {formattedRating}
+        </Styled.GameSecondaryInfo>
 
-        <Button
+        <Styled.Button
           onClick={handleClick}
           variant="outlined"
           sx={{
@@ -138,8 +81,8 @@ export default function GameCard({
           }}
         >
           Ver mais
-        </Button>
-      </CardContent>
-    </Card>
+        </Styled.Button>
+      </Styled.GameCardContent>
+    </Styled.GameCard>
   );
 }

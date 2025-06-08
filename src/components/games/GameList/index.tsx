@@ -2,25 +2,17 @@
 
 import { useGames } from "@/hooks/useGames";
 import GameCard from "../GameCard";
-import {
-  Box,
-  Grid,
-  Pagination,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { GameCardSkeleton } from "../GameCard/skeleton";
 import { ChangeEvent, useState } from "react";
 import Show from "@/components/commons/Show";
 import EmptyState from "../EmptyState";
 
+import Styled from "./styles";
+
 const MOCK_SKELETON_GAMES = Array.from({ length: 12 });
 
 export default function GameList() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
   const [page, setPage] = useState(1);
   const {
     games = [],
@@ -36,35 +28,25 @@ export default function GameList() {
 
   if ((!isLoading && games.length === 0) || error) {
     return (
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100%",
-          textAlign: "center",
-          mt: 5,
-        }}
-      >
+      <Styled.EmptyBox>
         <EmptyState />
-      </Box>
+      </Styled.EmptyBox>
     );
   }
 
   return (
     <Box>
-      <Typography variant="h4" component="h1" sx={{ px: isMobile ? 2 : 0 }}>
+      <Styled.PageTitle variant="h4" component="h1">
         Games
-      </Typography>
+      </Styled.PageTitle>
 
-      <Box sx={{ mt: isMobile ? 3 : 5, mx: isMobile ? 2 : 0 }}>
+      <Styled.ContentBox>
         <Show if={isLoading}>
           <Grid container spacing={2}>
             {MOCK_SKELETON_GAMES.map((_, index) => (
               <Grid
                 key={`card-game-skeleton-${index}`}
-                size={{ xs: 12, sm: 6, md: 3 }}
+                size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
               >
                 <GameCardSkeleton key={`skeleton-game-${index}`} />
               </Grid>
@@ -84,7 +66,7 @@ export default function GameList() {
             ))}
           </Grid>
 
-          <Pagination
+          <Styled.Pagination
             count={totalPages}
             variant="outlined"
             shape="rounded"
@@ -93,17 +75,9 @@ export default function GameList() {
             onChange={handlePageChange}
             hidePrevButton
             hideNextButton
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              mt: 5,
-            }}
           />
         </Show>
-      </Box>
+      </Styled.ContentBox>
     </Box>
   );
 }
-
-// ADJUST PAGINANTION SIZE ON MOBILE

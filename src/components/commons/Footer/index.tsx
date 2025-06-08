@@ -1,25 +1,17 @@
 import Link from "next/link";
 import Social from "@/components/commons/Social";
+import Logo from "@/components/commons/Logo";
 import {
-  Box,
   Container,
-  Divider,
   Grid,
   Typography,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
 
-export const COPYRIGHT_LINKS = [
-  {
-    href: "/privacy",
-    label: "Privacy Policies",
-  },
-  {
-    href: "/terms",
-    label: "Terms of Use",
-  },
-];
+import { COPYRIGHT_LINKS } from "./constants";
+
+import Styled from "./styles";
 
 export default function Footer() {
   const theme = useTheme();
@@ -43,11 +35,7 @@ export default function Footer() {
     >
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, md: 6 }}>
-          <Box>
-            <Typography variant="body2" noWrap color="primary.contrastText">
-              GAMING HUB
-            </Typography>
-          </Box>
+          <Logo color="primary.contrastText" />
         </Grid>
 
         <Grid size={{ xs: 12, md: 6 }}>
@@ -55,38 +43,21 @@ export default function Footer() {
         </Grid>
       </Grid>
 
-      <Divider
-        aria-hidden="true"
-        component="div"
-        variant="middle"
-        sx={{ ml: 0, mr: 0, borderColor: theme.palette.text.disabled }}
-      />
+      <Styled.Divider aria-hidden="true" variant="middle" />
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          gap: 1.5,
-          mt: 2,
-        }}
-      >
+      <Styled.Box>
         <Typography variant="body2" color="primary.contrastText">
           GAMING HUB © {year}
         </Typography>
 
         {COPYRIGHT_LINKS.map((link) => (
           <Link href={link.href} key={link.href}>
-            <Typography
-              variant="body2"
-              color="primary.contrastText"
-              sx={{ textDecoration: "underline", textUnderlineOffset: 3 }}
-            >
+            <Styled.CopyrightLink variant="body2" color="primary.contrastText">
               • {link.label}
-            </Typography>
+            </Styled.CopyrightLink>
           </Link>
         ))}
-      </Box>
+      </Styled.Box>
     </Container>
   );
 }

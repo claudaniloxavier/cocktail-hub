@@ -1,15 +1,12 @@
 "use client";
-
 import { useState } from "react";
 
 import {
-  AppBar,
   Box,
   IconButton,
   Drawer,
   List,
   ListItem,
-  Toolbar,
   Typography,
   useMediaQuery,
   useTheme,
@@ -18,15 +15,17 @@ import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@/components/commons/Icons/Person";
 import ShoppingCartIcon from "@/components/commons/Icons/ShoppingCart";
+import Logo from "@/components/commons/Logo";
 
 import { MENU_ITEMS } from "./constants";
+
+import Styled from "./styles";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isSmallScreen = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -34,63 +33,23 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="sticky"
-        elevation={0}
-        sx={{
-          backgroundColor: isMobile
-            ? theme.palette.background.default
-            : theme.palette.background.paper,
-          borderRadius: isMobile ? "none" : "999px",
-        }}
-      >
-        <Toolbar
-          sx={{
-            justifyContent: "space-between",
-            minHeight: 88,
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Typography variant="h6" noWrap color="text.primary">
-              GAMING HUB
-            </Typography>
-          </Box>
+      <Styled.AppBar position="sticky" elevation={0}>
+        <Styled.Toolbar>
+          <Logo color="text.secondary" />
 
           {!isMobile && (
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-around",
-                px: isSmallScreen ? 2 : 10,
-                flex: 1,
-              }}
-            >
+            <Styled.MenuItemsWrapper>
               {MENU_ITEMS.map((item) => (
                 <Link key={item.label} href={item.href} passHref>
-                  <Typography
-                    variant="body1"
-                    noWrap
-                    sx={{
-                      cursor: "pointer",
-                      fontWeight: "700",
-                      fontSize: "14px",
-                      color: theme.palette.text.secondary,
-                      "&:hover": {
-                        color: theme.palette.primary.main,
-                      },
-                    }}
-                  >
+                  <Styled.MenuItem variant="body1" noWrap>
                     {item.label}
-                  </Typography>
+                  </Styled.MenuItem>
                 </Link>
               ))}
-            </Box>
+            </Styled.MenuItemsWrapper>
           )}
 
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <Styled.ActionsWrapper>
             {!isMobile && (
               <IconButton color="default" aria-label="profile">
                 <PersonIcon />
@@ -106,7 +65,7 @@ export default function Navbar() {
                 <MenuIcon />
               </IconButton>
             )}
-          </Box>
+          </Styled.ActionsWrapper>
 
           <Drawer
             anchor="right"
@@ -121,7 +80,7 @@ export default function Navbar() {
             >
               <List>
                 {MENU_ITEMS.map((item) => (
-                  <Link key={item.label} href={item.href} passHref>
+                  <Link key={item.label} href={item.href}>
                     <ListItem>
                       <Typography variant="body1">{item.label}</Typography>
                     </ListItem>
@@ -130,8 +89,8 @@ export default function Navbar() {
               </List>
             </Box>
           </Drawer>
-        </Toolbar>
-      </AppBar>
+        </Styled.Toolbar>
+      </Styled.AppBar>
     </Box>
   );
 }

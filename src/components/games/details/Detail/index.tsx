@@ -1,30 +1,28 @@
 "use client";
 
 import React from "react";
+
+import { useParams } from "next/navigation";
+import { useGameDetails } from "@/hooks/useGameDetails";
+import { useBuildGameInformations } from "@/components/games/details/Informations/hooks/useBuildGameInformations";
+
 import {
   CardContent,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import GameAbout from "@/components/games/details/About";
+import GameInformations from "@/components/games/details/Informations";
 
 import Styled from "./styles";
-
-import GameAbout from "../About";
-import GameInformations from "../Informations";
-import { useParams } from "next/navigation";
-
-import { useGameDetails } from "@/hooks/useGameDetails";
-import { useBuildGameInformations } from "../Informations/useBuildGameInformations";
 
 export default function GameDetailPage() {
   const theme = useTheme();
   const params = useParams();
-
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const { data } = useGameDetails(params.id as string);
-
   const { mainInfo, secondaryInfo } = useBuildGameInformations(
     data && data[0],
     isMobile

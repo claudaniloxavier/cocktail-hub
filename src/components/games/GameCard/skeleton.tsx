@@ -1,26 +1,13 @@
-import { Box, Card, Skeleton, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Skeleton, useMediaQuery, useTheme } from "@mui/material";
+
+import Styled from "./styles";
 
 export const GameCardSkeleton = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Card
-      sx={{
-        display: "flex",
-        flexDirection: isMobile ? "row" : "column",
-        alignItems: "center",
-        justifyContent: "space-between",
-        p: 2,
-        gap: 2,
-        border: "1px solid",
-        borderColor: theme.palette.divider,
-        borderRadius: 1,
-        boxShadow: 0,
-        width: isMobile ? "100%" : 266,
-        height: isMobile ? 161 : 423,
-      }}
-    >
+    <Styled.SkeletonCard>
       <Skeleton
         variant="rectangular"
         animation="wave"
@@ -29,14 +16,7 @@ export const GameCardSkeleton = () => {
       />
 
       <Box sx={{ flex: 1 }}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            mb: 2,
-            width: "100%",
-          }}
-        >
+        <Styled.SkeletonInfoBox>
           <Skeleton variant="text" animation="wave" width={194} height={48} />
           <Skeleton
             variant="text"
@@ -45,7 +25,7 @@ export const GameCardSkeleton = () => {
             height={24}
             sx={{ mt: -1 }}
           />
-        </Box>
+        </Styled.SkeletonInfoBox>
 
         <Skeleton
           variant="rounded"
@@ -54,6 +34,6 @@ export const GameCardSkeleton = () => {
           height={isMobile ? 40 : 54}
         />
       </Box>
-    </Card>
+    </Styled.SkeletonCard>
   );
 };

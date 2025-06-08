@@ -4,18 +4,20 @@ import YoutubeIcon from "@/components/commons/Icons/Youtube";
 import SpotifyIcon from "@/components/commons/Icons/Spotify";
 import InstagramIcon from "@/components/commons/Icons/Instagram";
 
+import Styled from "./styles";
+
 export default function Social() {
   const theme = useTheme();
+
+  const SocialMediaIcons = [
+    { Icon: YoutubeIcon, label: "YouTube" },
+    { Icon: SpotifyIcon, label: "Spotify" },
+    { Icon: FacebookIcon, label: "Facebook" },
+    { Icon: InstagramIcon, label: "Instagram" },
+  ];
+
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        alignItems: "center",
-        gap: 2,
-      }}
-    >
+    <Styled.Box>
       <Typography
         variant="h6"
         fontWeight="bold"
@@ -26,22 +28,16 @@ export default function Social() {
       </Typography>
 
       <Box>
-        <IconButton sx={{ color: theme.palette.primary.contrastText }}>
-          <YoutubeIcon color="inherit" />
-        </IconButton>
-
-        <IconButton sx={{ color: theme.palette.primary.contrastText }}>
-          <SpotifyIcon color="inherit" />
-        </IconButton>
-
-        <IconButton sx={{ color: theme.palette.primary.contrastText }}>
-          <FacebookIcon color="inherit" />
-        </IconButton>
-
-        <IconButton sx={{ color: theme.palette.primary.contrastText }}>
-          <InstagramIcon color="inherit" />
-        </IconButton>
+        {SocialMediaIcons.map(({ Icon, label }) => (
+          <IconButton
+            key={label}
+            sx={{ color: theme.palette.primary.contrastText }}
+            aria-label={label}
+          >
+            <Icon color="inherit" />
+          </IconButton>
+        ))}
       </Box>
-    </Box>
+    </Styled.Box>
   );
 }

@@ -38,7 +38,7 @@ const theme = createTheme({
     divider: "#E0E0E0",
   },
   typography: {
-    fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Inter", "Archivo", "Arial", sans-serif',
     button: {
       textTransform: "none",
       fontWeight: 600,
@@ -68,23 +68,6 @@ const theme = createTheme({
           padding: "0",
           "&:last-child": {
             padding: "0",
-          },
-        },
-      },
-    },
-    MuiPagination: {
-      styleOverrides: {
-        root: {
-          "ul>li>button": {
-            borderRadius: "8px",
-            width: 56,
-            height: 56,
-            border: "none",
-
-            "&.Mui-selected": {
-              backgroundColor: "#DECAFF",
-              color: "#6A00F4",
-            },
           },
         },
       },
