@@ -1,40 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#### [Demo do projeto](https://gaming-bbkdnwib0-claudanilo-xaviers-projects.vercel.app/games)
 
-## Getting Started
+## O projeto
 
-First, run the development server:
+### Principais Tecnologias
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- React
+- Next
+- Typescript
+- Material UI
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Integrações
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [IGDB API](https://api-docs.igdb.com/#getting-started)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Rodando o projeto localmente
 
-## Learn More
+Este projeto utiliza o node na versão 18.20.5, tenha certeza de o ter na sua maquina.
 
-To learn more about Next.js, take a look at the following resources:
+    $ git clone    https://github.com/claudaniloxavier/gaming-hub.git
+    $ cd gaming-hub
+    $ npm i
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Antes de rodar a aplicação é necessario configurar nosso ambiente. Crie um arquivo .env com as seguintes informações:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    TWITCH_CLIENT_ID=your-twitch-client-id
+    TWITCH_CLIENT_SECRET=your-twitch-secret
 
-## Deploy on Vercel
+Para conseguir as suas credenciais da twitch veja a [documentação do IGBD](https://api-docs.igdb.com/#getting-started).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Após configurar tudo, apenas rode:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    $ npm run dev
 
-login into twitch account and get client id and client secret - https://api-docs.igdb.com/#getting-started
-
-put it into the .env file
+Se voce fez tudo corretamente, acesse `http://localhost:3000` e veja a aplicação rodando.
