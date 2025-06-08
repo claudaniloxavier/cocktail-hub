@@ -2,7 +2,14 @@
 
 import { useGames } from "@/hooks/useGames";
 import GameCard from "../GameCard";
-import { Box, Grid, Pagination, useTheme } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Pagination,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { GameCardSkeleton } from "../GameCard/skeleton";
 import { ChangeEvent, useState } from "react";
 import Show from "@/components/commons/Show";
@@ -12,6 +19,7 @@ const MOCK_SKELETON_GAMES = Array.from({ length: 12 });
 
 export default function GameList() {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [page, setPage] = useState(1);
   const {
@@ -45,56 +53,57 @@ export default function GameList() {
   }
 
   return (
-    <Box
-      sx={{
-        backgroundColor: theme.palette.background.paper,
-        borderRadius: "16px",
-        pt: 2,
-        pb: 3,
-        pl: 2.5,
-        pr: 2.5,
-        mt: 5,
-      }}
-    >
-      <Show if={isLoading}>
-        <Grid container spacing={2}>
-          {MOCK_SKELETON_GAMES.map((_, index) => (
-            <Grid
-              key={`card-game-skeleton-${index}`}
-              size={{ xs: 12, sm: 6, md: 3 }}
-            >
-              <GameCardSkeleton key={`skeleton-game-${index}`} />
-            </Grid>
-          ))}
-        </Grid>
-      </Show>
+    <Box>
+      <Typography variant="h4" component="h1" sx={{ px: isMobile ? 2 : 0 }}>
+        Games
+      </Typography>
 
-      <Show if={!isLoading}>
-        <Grid container spacing={2}>
-          {games.map((game) => (
-            <Grid key={`card-game-${game.id}`} size={{ xs: 12, sm: 6, md: 3 }}>
-              <GameCard {...game} />
-            </Grid>
-          ))}
-        </Grid>
+      <Box sx={{ mt: isMobile ? 3 : 5, mx: isMobile ? 2 : 0 }}>
+        <Show if={isLoading}>
+          <Grid container spacing={2}>
+            {MOCK_SKELETON_GAMES.map((_, index) => (
+              <Grid
+                key={`card-game-skeleton-${index}`}
+                size={{ xs: 12, sm: 6, md: 3 }}
+              >
+                <GameCardSkeleton key={`skeleton-game-${index}`} />
+              </Grid>
+            ))}
+          </Grid>
+        </Show>
 
-        <Pagination
-          count={totalPages}
-          variant="outlined"
-          shape="rounded"
-          size="large"
-          page={currentPage}
-          onChange={handlePageChange}
-          hidePrevButton
-          hideNextButton
-          sx={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            mt: 5,
-          }}
-        />
-      </Show>
+        <Show if={!isLoading}>
+          <Grid container spacing={2}>
+            {games.map((game) => (
+              <Grid
+                key={`card-game-${game.id}`}
+                size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+              >
+                <GameCard {...game} />
+              </Grid>
+            ))}
+          </Grid>
+
+          <Pagination
+            count={totalPages}
+            variant="outlined"
+            shape="rounded"
+            size="large"
+            page={currentPage}
+            onChange={handlePageChange}
+            hidePrevButton
+            hideNextButton
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              mt: 5,
+            }}
+          />
+        </Show>
+      </Box>
     </Box>
   );
 }
+
+// ADJUST PAGINANTION SIZE ON MOBILE

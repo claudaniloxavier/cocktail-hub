@@ -1,7 +1,7 @@
 "use client";
 import Navbar from "@/components/commons/Navbar";
 import Footer from "@/components/commons/Footer";
-import { Container, Box, useTheme } from "@mui/material";
+import { Container, Box, useTheme, useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function Layout({
@@ -10,6 +10,8 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -26,14 +28,15 @@ export default function Layout({
         component="main"
         sx={{
           backgroundColor: theme.palette.background.default,
-          pt: 5,
-          pb: 10,
+          pt: isMobile ? 0 : 5,
+          pb: isMobile ? 5 : 10,
+          px: isMobile ? 0 : 5,
           flex: 1,
         }}
       >
         <Navbar />
 
-        <Box sx={{ flex: 1, pt: 7 }} component="section">
+        <Box sx={{ flex: 1, pt: isMobile ? 0 : 8 }} component="section">
           {children}
         </Box>
       </Container>

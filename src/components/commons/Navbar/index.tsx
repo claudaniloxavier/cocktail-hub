@@ -5,7 +5,6 @@ import { useState } from "react";
 import {
   AppBar,
   Box,
-  Container,
   IconButton,
   Drawer,
   List,
@@ -26,23 +25,33 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
-    <AppBar
-      position="sticky"
-      elevation={0}
-      sx={{
-        backgroundColor: theme.palette.background.paper,
-        borderRadius: "999px",
-      }}
-    >
-      <Container maxWidth="xl" disableGutters>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar
+        position="sticky"
+        elevation={0}
+        sx={{
+          backgroundColor: isMobile
+            ? theme.palette.background.default
+            : theme.palette.background.paper,
+          borderRadius: isMobile ? "none" : "999px",
+        }}
+      >
+        <Toolbar
+          sx={{
+            justifyContent: "space-between",
+            minHeight: 88,
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Typography variant="h6" noWrap color="text.primary">
               GAMING HUB
@@ -53,20 +62,21 @@ export default function Navbar() {
             <Box
               sx={{
                 display: "flex",
-                position: "absolute",
-                left: "50%",
-                transform: "translateX(-50%)",
+                flexDirection: "row",
+                justifyContent: "space-around",
+                px: isSmallScreen ? 2 : 10,
+                flex: 1,
               }}
             >
               {MENU_ITEMS.map((item) => (
-                <Link key={item.href} href={item.href} passHref>
+                <Link key={item.label} href={item.href} passHref>
                   <Typography
                     variant="body1"
+                    noWrap
                     sx={{
                       cursor: "pointer",
                       fontWeight: "700",
                       fontSize: "14px",
-                      minWidth: "140px",
                       color: theme.palette.text.secondary,
                       "&:hover": {
                         color: theme.palette.primary.main,
@@ -111,7 +121,7 @@ export default function Navbar() {
             >
               <List>
                 {MENU_ITEMS.map((item) => (
-                  <Link key={item.href} href={item.href} passHref>
+                  <Link key={item.label} href={item.href} passHref>
                     <ListItem>
                       <Typography variant="body1">{item.label}</Typography>
                     </ListItem>
@@ -121,7 +131,7 @@ export default function Navbar() {
             </Box>
           </Drawer>
         </Toolbar>
-      </Container>
-    </AppBar>
+      </AppBar>
+    </Box>
   );
 }

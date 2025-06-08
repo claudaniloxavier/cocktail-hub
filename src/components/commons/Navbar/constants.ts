@@ -1,6 +1,6 @@
 export const MENU_ITEMS = [
   {
-    href: "/home",
+    href: "/",
     label: "Home",
   },
   {
@@ -8,11 +8,11 @@ export const MENU_ITEMS = [
     label: "Games",
   },
   {
-    href: "/about-us",
+    href: "/",
     label: "About us",
   },
   {
-    href: "/contact",
+    href: "/",
     label: "Contact",
   },
 ];

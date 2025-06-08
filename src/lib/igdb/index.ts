@@ -4,8 +4,9 @@ import { Game } from "@/types/game";
 import {
   IGDB_BASE_URL,
   TWITCH_AUTH_URL,
-  GBA_PLATFORM_ID,
-  SNES_PLATFORM_ID,
+  PS4_PLATFORM_ID,
+  PS5_PLATFORM_ID,
+  SWITCH_PLATFORM_ID,
 } from "./constants";
 
 let cachedToken: string | null = null;
@@ -66,7 +67,7 @@ export const fetchGames = async (offset = 0, limit = 20): Promise<Game[]> => {
     `
       fields id, name, cover.url, summary, rating, platforms.slug, first_release_date;
       sort popularity desc;
-      where platforms = (${GBA_PLATFORM_ID}, ${SNES_PLATFORM_ID});
+      where platforms = (${PS5_PLATFORM_ID}, ${PS4_PLATFORM_ID}, ${SWITCH_PLATFORM_ID});
       limit ${limit};
       offset ${offset};
     `
@@ -76,7 +77,7 @@ export const fetchGames = async (offset = 0, limit = 20): Promise<Game[]> => {
 export const fetchGamesCount = async (): Promise<number> => {
   const res = await igdbFetch<{ count: number }>(
     `
-      where platforms = (${GBA_PLATFORM_ID});
+      where platforms = (${PS5_PLATFORM_ID}, ${PS4_PLATFORM_ID}, ${SWITCH_PLATFORM_ID});
     `,
     "games/count"
   );
@@ -84,10 +85,10 @@ export const fetchGamesCount = async (): Promise<number> => {
   return res.count;
 };
 
-export const fetchGameDetails = async (gameId: number) => {
+export const fetchGameDetails = async (gameId: string): Promise<Game[]> => {
   return igdbFetch(
     `
-      fields id, name, cover.url, first_release_date, summary, rating, genres.name, platforms.name, screenshots.url;
+      fields id, name, cover.url, first_release_date, summary, storyline, rating, genres.name, platforms.name, dlcs, game_type.type, game_engines.name;
       where id = ${gameId};
     `
   );
