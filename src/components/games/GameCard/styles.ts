@@ -17,11 +17,11 @@ const SkeletonCard = styled(MuiCard)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "space-between",
   padding: theme.spacing(2),
-  gap: theme.spacing(2),
+  gap: theme.spacing(1),
   border: `1px solid ${theme.palette.divider}`,
   borderRadius: theme.shape.borderRadius,
   width: 266,
-  height: 423,
+  height: 416,
   boxShadow: "none",
 
   [theme.breakpoints.down("sm")]: {
@@ -35,7 +35,7 @@ const SkeletonInfoBox = styled(MuiBox)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   width: "100%",
-  marginBottom: theme.spacing(2),
+  marginBottom: theme.spacing(1),
 }));
 
 const GameCard = styled(MuiCard)(({ theme }) => ({
