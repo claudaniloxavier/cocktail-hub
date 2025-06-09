@@ -55,6 +55,7 @@ export default function Navbar() {
             color="default"
             aria-label="profile"
             onClick={handleBack}
+            sx={{ pl: 0 }}
           >
             <ArrowLeftIcon />
           </IconButton>
@@ -64,6 +65,7 @@ export default function Navbar() {
             color="text.primary"
             fontWeight={700}
             fontFamily="Open Sans, sans-serif"
+            sx={{ maxWidth: 248 }}
           >
             {gameName}
           </Typography>
