@@ -6,12 +6,12 @@ type ImageBoxProps = BoxProps<"img"> & ComponentPropsWithoutRef<"img">;
 
 const Box = styled(MuiBox)<ImageBoxProps>(({ theme }) => ({
   width: "100%",
-  objectPosition: "top left",
   height: 595,
-  objectFit: "fill",
+  objectFit: "contain",
 
   [theme.breakpoints.down("sm")]: {
     height: 180,
+    objectPosition: "top left",
     objectFit: "cover",
   },
 }));
