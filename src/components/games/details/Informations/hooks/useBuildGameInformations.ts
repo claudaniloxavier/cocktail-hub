@@ -35,8 +35,8 @@ export function useBuildGameInformations(
 
     const releaseDate = first_release_date
       ? new Date(first_release_date * 1000).toLocaleDateString("en-US")
-      : "-";
-    const formattedRating = rating ? `${Math.round(rating)}` : "-";
+      : "N/A";
+    const formattedRating = rating ? `${Math.round(rating)}` : "N/A";
 
     if (isMobile) {
       mainInfo.push(
@@ -53,11 +53,11 @@ export function useBuildGameInformations(
               )
             )?.name ||
             platforms?.[0]?.name ||
-            "-",
+            "N/A",
         },
         {
           label: "Genre",
-          value: genres ? genres[0].name : "-",
+          value: genres ? genres[0].name : "N/A",
         },
         {
           label: "Rating",
@@ -68,15 +68,15 @@ export function useBuildGameInformations(
       secondaryInfo.push(
         {
           label: "Game Engines",
-          value: game_engines ? game_engines[0].name : "-",
+          value: game_engines ? game_engines[0].name : "N/A",
         },
         {
           label: "Game Type",
-          value: game_type ? game_type.type : "-",
+          value: game_type ? game_type.type : "N/A",
         },
         {
           label: "DLCs",
-          value: dlcs?.length ? "Yes" : "-",
+          value: dlcs?.length ? "Yes" : "N/A",
         }
       );
 
@@ -100,11 +100,11 @@ export function useBuildGameInformations(
             )
           )?.name ||
           platforms?.[0]?.name ||
-          "-",
+          "N/A",
       },
       {
         label: "Genre",
-        value: genres ? genres[0].name : "-",
+        value: genres ? genres[0].name : "N/A",
       },
       {
         label: "Rating",
@@ -112,15 +112,15 @@ export function useBuildGameInformations(
       },
       {
         label: "Game Engines",
-        value: game_engines ? game_engines[0].name : "-",
+        value: game_engines ? game_engines[0].name : "N/A",
       },
       {
         label: "Game Type",
-        value: game_type ? game_type.type : "-",
+        value: game_type ? game_type.type : "N/A",
       },
       {
         label: "DLCs",
-        value: dlcs?.length ? "Yes" : "-",
+        value: dlcs?.length ? "Yes" : "N/A",
       }
     );
 

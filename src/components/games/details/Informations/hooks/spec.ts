@@ -24,7 +24,7 @@ const MOCK_GAME_MAIN_INFO_DESKTOP = [
   { label: "Rating", value: "85" },
   { label: "Game Engines", value: "Unreal Engine" },
   { label: "Game Type", value: "Single-player" },
-  { label: "DLCs", value: "-" },
+  { label: "DLCs", value: "N/A" },
 ];
 
 const MOCK_GAME_MAIN_INFO_MOBILE = [
@@ -37,7 +37,7 @@ const MOCK_GAME_MAIN_INFO_MOBILE = [
 const MOCK_GAME_SECONDARY_INFO_MOBILE = [
   { label: "Game Engines", value: "Unreal Engine" },
   { label: "Game Type", value: "Single-player" },
-  { label: "DLCs", value: "-" },
+  { label: "DLCs", value: "N/A" },
 ];
 
 describe("useBuildGameInformations", () => {

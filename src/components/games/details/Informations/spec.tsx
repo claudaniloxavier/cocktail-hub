@@ -13,7 +13,7 @@ const MOCK_GAME_MAIN_INFO = [
 const MOCK_GAME_SECONDARY_INFO = [
   { label: "Game Engines", value: "Unreal Engine" },
   { label: "Game Type", value: "Single-player" },
-  { label: "DLCs", value: "-" },
+  { label: "DLCs", value: "N/A" },
 ];
 
 describe("<GameInformations />", () => {
