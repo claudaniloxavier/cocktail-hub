@@ -36,8 +36,8 @@ export default function GameCard({
 
   const formattedRating = rating ? `rat. ${Math.round(rating)}` : "Rating n/a";
   const coverUrl = isMobile
-    ? cover?.url.replace("t_thumb", "t_cover_big")
-    : cover?.url.replace("t_thumb", "t_logo_med");
+    ? cover?.url.replace("t_thumb", "t_logo_med")
+    : cover?.url.replace("t_thumb", "t_cover_big");
 
   const handleClick = () => {
     router.push(`/games/${id}`);
