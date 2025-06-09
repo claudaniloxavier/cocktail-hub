@@ -8,6 +8,7 @@
 - Next
 - Typescript
 - Material UI
+- React Query V5
 
 ### Integrações
 
@@ -15,9 +16,9 @@
 
 ## Rodando o projeto localmente
 
-Este projeto utiliza o node na versão 18.20.5, tenha certeza de o ter na sua maquina.
+Este projeto utiliza o node na versão 18.20.5, tenha certeza de ter na sua maquina.
 
-    $ git clone    https://github.com/claudaniloxavier/gaming-hub.git
+    $ git clone https://github.com/claudaniloxavier/gaming-hub.git
     $ cd gaming-hub
     $ npm i
 
