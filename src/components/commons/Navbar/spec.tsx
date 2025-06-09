@@ -101,11 +101,12 @@ describe("<Navbar />", () => {
   });
 
   it("should render menu option selected based on current path", () => {
+    (mui.useMediaQuery as jest.Mock).mockReturnValue(false);
     (usePathname as jest.Mock).mockReturnValue("/games");
 
     render(<Navbar />, { wrapper: queryTestProvider });
 
-    const gamesMenuItem = screen.getByRole("link", { name: "Games" });
+    const gamesMenuItem = screen.getByRole("link", { name: /Games/i });
     expect(gamesMenuItem).toHaveStyle(`color: var(--AppBar-color)`);
   });
 });

@@ -10,6 +10,7 @@ export default function GameDetailSkeleton() {
   const MOCK_SKELETON_CARD = Array.from({ length: isMobile ? 4 : 8 }, () =>
     crypto.randomUUID()
   );
+
   const MOCK_SKELETON_LIST = isMobile
     ? Array.from({ length: 4 }, () => crypto.randomUUID())
     : [];
