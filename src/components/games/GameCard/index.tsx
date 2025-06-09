@@ -1,7 +1,5 @@
 import { useRouter } from "next/navigation";
 
-import { useTheme, useMediaQuery } from "@mui/material";
-
 import {
   PS4_PLATFORM_ID,
   PS5_PLATFORM_ID,
@@ -20,8 +18,6 @@ export default function GameCard({
   first_release_date,
 }: Game) {
   const router = useRouter();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const gameReleaseDate = first_release_date
     ? new Date(first_release_date * 1000).getFullYear()
@@ -35,9 +31,7 @@ export default function GameCard({
   );
 
   const formattedRating = rating ? `rat. ${Math.round(rating)}` : "Rating n/a";
-  const coverUrl = isMobile
-    ? cover?.url.replace("t_thumb", "t_cover_small")
-    : cover?.url.replace("t_thumb", "t_cover_big");
+  const coverUrl = cover?.url.replace("t_thumb", "t_cover_big");
 
   const handleClick = () => {
     router.push(`/games/${id}`);
