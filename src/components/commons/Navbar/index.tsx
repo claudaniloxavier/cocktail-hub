@@ -110,7 +110,11 @@ export default function Navbar() {
             </IconButton>
 
             {isMobile && (
-              <IconButton color="default" onClick={toggleMobileMenu}>
+              <IconButton
+                color="default"
+                onClick={toggleMobileMenu}
+                aria-label="menu"
+              >
                 <MenuIcon />
               </IconButton>
             )}
