@@ -1,6 +1,5 @@
-import Styled from "./styles";
-
 import { LogoProps as Props } from "./types";
+import Styled from "./styles";
 
 export default function Logo({ color = "text.secondary" }: Props) {
   return (

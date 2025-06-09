@@ -1,7 +1,7 @@
 import { List, Typography } from "@mui/material";
-import Styled from "./styles";
 
 import { InfoListProps as Props } from "./types";
+import Styled from "./styles";
 
 export default function InfoList({ list }: Props) {
   return (

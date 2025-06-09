@@ -1,4 +1,4 @@
-#### [Demo do projeto](https://gaming-bbkdnwib0-claudanilo-xaviers-projects.vercel.app/games)
+#### [Demo do projeto](https://gaming-hub-delta.vercel.app/games)
 
 ## O projeto
 

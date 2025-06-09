@@ -1,11 +1,11 @@
 import { useMemo } from "react";
-import { Game } from "@/types/game";
 import {
   PS4_PLATFORM_ID,
   PS5_PLATFORM_ID,
   SWITCH_PLATFORM_ID,
 } from "@/lib/igdb/constants";
 
+import { Game } from "@/types/game";
 import { GameInformation } from "../types";
 
 export function useBuildGameInformations(

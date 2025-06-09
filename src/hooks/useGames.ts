@@ -1,5 +1,3 @@
-"use client";
-
 import { useQuery } from "@tanstack/react-query";
 import { fetchGames, fetchGamesCount } from "@/lib/igdb";
 import { Game } from "@/types/game";

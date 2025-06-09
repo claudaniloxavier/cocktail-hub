@@ -1,4 +1,5 @@
 "use client";
+
 import Navbar from "@/components/commons/Navbar";
 import Footer from "@/components/commons/Footer";
 import { Container, Box, useTheme, useMediaQuery } from "@mui/material";

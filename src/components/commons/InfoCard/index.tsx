@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
-import Styled from "./styles";
 
 import { InfoCardProps as Props } from "./types";
+import Styled from "./styles";
 
 export default function InfoCard({ label, value }: Props) {
   return (
