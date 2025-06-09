@@ -10,6 +10,7 @@ export default function GameDetailSkeleton() {
   const MOCK_SKELETON_CARD = Array.from({ length: isMobile ? 4 : 8 }, () =>
     crypto.randomUUID()
   );
+
   const MOCK_SKELETON_LIST = isMobile
     ? Array.from({ length: 4 }, () => crypto.randomUUID())
     : [];
@@ -22,7 +23,7 @@ export default function GameDetailSkeleton() {
         height={isMobile ? 180 : 595}
       />
 
-      <Styled.Card>
+      <Styled.Card data-testid="game-detail-skeleton">
         {!isMobile && <Skeleton variant="text" height={48} width="80%" />}
 
         <Skeleton variant="text" height={20} width="20%" />

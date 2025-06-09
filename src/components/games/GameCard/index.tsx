@@ -35,6 +35,8 @@ export default function GameCard({
   );
 
   const formattedRating = rating ? `rat. ${Math.round(rating)}` : "Rating n/a";
+
+  /* istanbul ignore next */
   const coverUrl = isMobile
     ? cover?.url.replace("t_thumb", "t_logo_med")
     : cover?.url.replace("t_thumb", "t_cover_big");
@@ -68,7 +70,7 @@ export default function GameCard({
         </Styled.GameSecondaryInfo>
 
         <Styled.Button onClick={handleClick} variant="outlined">
-          Ver mais
+          Show more
         </Styled.Button>
       </Styled.GameCardContent>
     </Styled.GameCard>

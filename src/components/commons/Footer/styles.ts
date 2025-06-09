@@ -1,10 +1,21 @@
 import {
   Box as MuiBox,
+  Container as MuiContainer,
+  ContainerProps,
   Divider as MuiDivider,
   Typography as MuiTypography,
 } from "@mui/material";
 
 import { styled } from "@mui/material/styles";
+
+const FooterContainer = styled(MuiContainer)<ContainerProps>(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  padding: theme.spacing(7.5, 12),
+
+  [theme.breakpoints.down("md")]: {
+    padding: theme.spacing(3.5, 5),
+  },
+}));
 
 const Divider = styled(MuiDivider)(({ theme }) => ({
   marginLeft: 0,
@@ -26,6 +37,7 @@ const CopyrightLink = styled(MuiTypography)(() => ({
 }));
 
 const Styled = {
+  FooterContainer,
   Divider,
   Box,
   CopyrightLink,

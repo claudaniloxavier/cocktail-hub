@@ -45,6 +45,13 @@ export default function Navbar() {
     router.back();
   };
 
+  const highlightedMenuItem = MENU_ITEMS.find((item) => {
+    if (item.href === "/games") {
+      return pathname.startsWith("/games");
+    }
+    return item.href === pathname;
+  });
+
   const isGameDetailPage = /^\/games\/[^/]+$/.test(pathname);
   const renderLogoItem = () => {
     if (isGameDetailPage && isMobile && gameName) {
@@ -53,7 +60,7 @@ export default function Navbar() {
           <IconButton
             size="large"
             color="default"
-            aria-label="profile"
+            aria-label="back"
             onClick={handleBack}
             sx={{ pl: 0 }}
           >
@@ -90,7 +97,9 @@ export default function Navbar() {
                     variant="body1"
                     noWrap
                     color={
-                      pathname === item.href ? "primary.main" : "text.secondary"
+                      highlightedMenuItem?.href === item.href
+                        ? "primary.main"
+                        : "text.secondary"
                     }
                   >
                     {item.label}
@@ -140,9 +149,9 @@ export default function Navbar() {
                       <Typography
                         variant="body1"
                         color={
-                          pathname === item.href
+                          highlightedMenuItem?.href === item.href
                             ? "primary.main"
-                            : "text.primary"
+                            : "text.secondary"
                         }
                       >
                         {item.label}

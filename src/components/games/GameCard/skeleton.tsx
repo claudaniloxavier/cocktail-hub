@@ -7,7 +7,7 @@ export const GameCardSkeleton = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Styled.SkeletonCard>
+    <Styled.SkeletonCard data-testid="game-card-skeleton">
       <Skeleton
         variant="rectangular"
         width={isMobile ? 96 : 232}

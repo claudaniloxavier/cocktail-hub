@@ -103,7 +103,7 @@ export function useBuildGameInformations(
           "-",
       },
       {
-        label: "Genres",
+        label: "Genre",
         value: genres ? genres[0].name : "-",
       },
       {
