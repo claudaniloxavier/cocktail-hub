@@ -6,6 +6,7 @@ import {
   CardMediaProps,
   CardContent as MuiCardContent,
   Typography as MuiTypography,
+  TypographyProps,
 } from "@mui/material";
 
 import { styled } from "@mui/material/styles";
@@ -92,7 +93,7 @@ const GameCardContent = styled(MuiCardContent)(({ theme }) => ({
   },
 }));
 
-const GameTitle = styled(MuiTypography)(({ theme }) => ({
+const GameTitle = styled(MuiTypography)<TypographyProps>(({ theme }) => ({
   color: theme.palette.text.secondary,
   WebkitBoxOrient: "vertical",
   WebkitLineClamp: 1,
