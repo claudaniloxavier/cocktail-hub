@@ -1,6 +1,5 @@
 import { useRouter } from "next/navigation";
 
-import { useMediaQuery, useTheme } from "@mui/material";
 import {
   PS4_PLATFORM_ID,
   PS5_PLATFORM_ID,
@@ -18,9 +17,7 @@ export default function GameCard({
   rating,
   first_release_date,
 }: Game) {
-  const theme = useTheme();
   const router = useRouter();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const gameReleaseDate = first_release_date
     ? new Date(first_release_date * 1000).getFullYear()
@@ -49,6 +46,7 @@ export default function GameCard({
           variant="h6"
           fontWeight="bold"
           align="left"
+          fontFamily="Open Sans, sans-serif"
           title={name}
         >
           {name}
@@ -62,24 +60,7 @@ export default function GameCard({
           {gameMainPlatform?.name} | {gameReleaseDate} | {formattedRating}
         </Styled.GameSecondaryInfo>
 
-        <Styled.Button
-          onClick={handleClick}
-          variant="outlined"
-          sx={{
-            borderColor: theme.palette.primary.main,
-            borderRadius: "16px",
-            color: theme.palette.text.primary,
-            fontSize: "16px",
-            fontWeight: "600",
-            px: 3,
-            py: 1.5,
-            width: "100%",
-            alignSelf: isMobile ? "flex-start" : "center",
-            "&:hover": {
-              color: theme.palette.primary.dark,
-            },
-          }}
-        >
+        <Styled.Button onClick={handleClick} variant="outlined">
           Ver mais
         </Styled.Button>
       </Styled.GameCardContent>

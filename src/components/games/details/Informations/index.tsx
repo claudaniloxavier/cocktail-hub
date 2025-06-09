@@ -9,7 +9,7 @@ export default function GameInformations({
   secondaryInfo,
 }: GameInformation) {
   return (
-    <Box sx={{ mt: 3, mb: 3 }}>
+    <Box sx={{ mt: 3, mb: 8 }}>
       <Grid container spacing={2}>
         {mainInfo.map(({ label, value }) => (
           <Grid

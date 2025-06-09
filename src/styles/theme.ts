@@ -20,7 +20,7 @@ const theme = createTheme({
     },
     text: {
       primary: "#000000",
-      secondary: "#4A4A4A",
+      secondary: "#262626",
       disabled: "#E0E0E0",
     },
     error: {
@@ -38,7 +38,7 @@ const theme = createTheme({
     divider: "#E0E0E0",
   },
   typography: {
-    fontFamily: '"Inter", "Archivo", "Arial", sans-serif',
+    fontFamily: '"Inter", "Open Sans", "Arial", sans-serif',
     button: {
       textTransform: "none",
       fontWeight: 600,

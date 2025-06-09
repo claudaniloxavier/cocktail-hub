@@ -22,7 +22,7 @@ import Logo from "@/components/commons/Logo";
 import { MENU_ITEMS } from "./constants";
 
 import Styled from "./styles";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,6 +31,7 @@ export default function Navbar() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const pathname = usePathname();
+  const router = useRouter();
   const params = useParams();
   const { data } = useGameDetails(params.id as string);
 
@@ -40,12 +41,21 @@ export default function Navbar() {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const handleBack = () => {
+    router.back();
+  };
+
   const isGameDetailPage = /^\/games\/[^/]+$/.test(pathname);
   const renderLogoItem = () => {
     if (isGameDetailPage && isMobile && gameName) {
       return (
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <IconButton size="large" color="default" aria-label="profile">
+          <IconButton
+            size="large"
+            color="default"
+            aria-label="profile"
+            onClick={handleBack}
+          >
             <ArrowLeftIcon />
           </IconButton>
           <Typography
@@ -53,7 +63,7 @@ export default function Navbar() {
             noWrap
             color="text.primary"
             fontWeight={700}
-            fontFamily="Archivo"
+            fontFamily="Open Sans, sans-serif"
           >
             {gameName}
           </Typography>
@@ -74,7 +84,13 @@ export default function Navbar() {
             <Styled.MenuItemsWrapper>
               {MENU_ITEMS.map((item) => (
                 <Link key={item.label} href={item.href} passHref>
-                  <Styled.MenuItem variant="body1" noWrap>
+                  <Styled.MenuItem
+                    variant="body1"
+                    noWrap
+                    color={
+                      pathname === item.href ? "primary.main" : "text.secondary"
+                    }
+                  >
                     {item.label}
                   </Styled.MenuItem>
                 </Link>
@@ -115,7 +131,16 @@ export default function Navbar() {
                 {MENU_ITEMS.map((item) => (
                   <Link key={item.label} href={item.href}>
                     <ListItem>
-                      <Typography variant="body1">{item.label}</Typography>
+                      <Typography
+                        variant="body1"
+                        color={
+                          pathname === item.href
+                            ? "primary.main"
+                            : "text.primary"
+                        }
+                      >
+                        {item.label}
+                      </Typography>
                     </ListItem>
                   </Link>
                 ))}

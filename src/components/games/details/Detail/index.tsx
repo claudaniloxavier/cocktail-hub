@@ -56,14 +56,23 @@ export default function GameDetailPage() {
               <Typography
                 variant={isMobile ? "h6" : "h3"}
                 component="h1"
-                fontWeight="bold"
+                fontWeight={700}
+                fontFamily="Open Sans, sans-serif"
+                noWrap
                 gutterBottom
+                color="textSecondary"
               >
                 {name}
               </Typography>
             )}
 
-            <Typography variant="h6" fontWeight="medium" gutterBottom>
+            <Typography
+              variant="h6"
+              fontWeight={600}
+              fontFamily="Open Sans, sans-serif"
+              color="textSecondary"
+              gutterBottom
+            >
               Informations
             </Typography>
 
@@ -77,7 +86,7 @@ export default function GameDetailPage() {
               variant={isMobile ? "h6" : "h5"}
               fontWeight="bold"
               color={isMobile ? "text.secondary" : "text.primary"}
-              gutterBottom
+              fontFamily="Open Sans, sans-serif"
             >
               About {name}
             </Typography>

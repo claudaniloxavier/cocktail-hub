@@ -20,8 +20,9 @@ export default function Social() {
     <Styled.Box>
       <Typography
         variant="h6"
-        fontWeight="bold"
+        fontWeight={600}
         color="primary.contrastText"
+        fontFamily="Open Sans"
         sx={{ typography: { xs: "subtitle1", md: "h6" } }}
       >
         Follow us on social media:

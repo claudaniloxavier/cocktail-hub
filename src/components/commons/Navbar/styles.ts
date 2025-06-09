@@ -42,7 +42,6 @@ const MenuItem = styled(MuiTypography)(({ theme }) => ({
   cursor: "pointer",
   fontWeight: 700,
   fontSize: "14px",
-  color: theme.palette.text.secondary,
   "&:hover": {
     color: theme.palette.primary.main,
   },

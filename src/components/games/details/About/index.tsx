@@ -10,7 +10,8 @@ export default function GameAbout({ storyline, summary }: Props) {
     <Typography
       variant={isMobile ? "body2" : "body1"}
       color="text.secondary"
-      sx={{ textAlign: "justify" }}
+      sx={{ textAlign: "justify", mt: 3 }}
+      fontWeight={400}
     >
       {summary!}
 

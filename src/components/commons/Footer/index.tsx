@@ -46,13 +46,17 @@ export default function Footer() {
       <Styled.Divider aria-hidden="true" variant="middle" />
 
       <Styled.Box>
-        <Typography variant="body2" color="primary.contrastText">
+        <Typography variant="body2" color="primary.contrastText" fontSize={16}>
           GAMING HUB © {year}
         </Typography>
 
         {COPYRIGHT_LINKS.map((link) => (
           <Link href={link.href} key={link.href}>
-            <Styled.CopyrightLink variant="body2" color="primary.contrastText">
+            <Styled.CopyrightLink
+              variant="body2"
+              color="primary.contrastText"
+              fontSize={16}
+            >
               • {link.label}
             </Styled.CopyrightLink>
           </Link>

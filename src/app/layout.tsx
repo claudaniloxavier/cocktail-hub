@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Providers from "@/providers";
-import { Inter, Archivo } from "next/font/google";
+import { Inter, Open_Sans } from "next/font/google";
 
 import Layout from "@/components/commons/Layout";
 
@@ -10,7 +10,7 @@ const inter = Inter({
   variable: "--font-primary",
   subsets: ["latin"],
 });
-const archivo = Archivo({
+const openSans = Open_Sans({
   variable: "--font-secondary",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${archivo.variable}`}>
+      <body className={`${inter.variable} ${openSans.variable}`}>
         <Providers>
           <Layout>{children}</Layout>
         </Providers>

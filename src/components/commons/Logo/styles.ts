@@ -7,7 +7,7 @@ const Box = styled(MuiBox)(() => ({
 }));
 
 const Typography = styled(MuiTypography)(() => ({
-  fontFamily: "Archivo",
+  fontFamily: "Open Sans, sans-serif",
   fontWeight: 600,
   letterSpacing: "1px",
 }));

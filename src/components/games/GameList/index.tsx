@@ -36,7 +36,14 @@ export default function GameList() {
 
   return (
     <Box>
-      <Styled.PageTitle variant="h4" component="h1">
+      <Styled.PageTitle
+        variant="h4"
+        component="h1"
+        fontFamily="Open Sans, sans-serif"
+        fontWeight={700}
+        fontSize={32}
+        color="text.primary"
+      >
         Games
       </Styled.PageTitle>
 
