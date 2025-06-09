@@ -14,18 +14,27 @@ jest.mock("../../../hooks/useGames", () => ({
   useGames: jest.fn(),
 }));
 
-const MOCK_GAME = {
-  name: "Zelda: Breath of the Wild",
-  summary: "An open-world adventure game.",
-  storyline: "Link must save Hyrule from Calamity Ganon.",
-};
+const MOCK_GAMES = [
+  {
+    id: 1,
+    name: "Zelda: Breath of the Wild",
+    summary: "An open-world adventure game.",
+    storyline: "Link must save Hyrule from Calamity Ganon.",
+  },
+  {
+    id: 2,
+    name: "Super Mario Odyssey",
+    summary: "A platform game featuring Mario.",
+    storyline: "Mario travels across worlds to save Princess Peach.",
+  },
+];
 
 const mockedUseGames = useGames as jest.Mock;
 
 describe("<GameList />", () => {
   beforeEach(() => {
     (useGames as jest.Mock).mockReturnValue({
-      games: Array(10).fill(MOCK_GAME),
+      games: MOCK_GAMES,
       isLoading: false,
       error: null,
       totalPages: 5,
@@ -38,7 +47,9 @@ describe("<GameList />", () => {
 
     expect(screen.getByRole("heading", { name: "Games" })).toBeInTheDocument();
 
-    expect(screen.getAllByText(MOCK_GAME.name)).toHaveLength(10);
+    for (const game of MOCK_GAMES) {
+      expect(screen.getByText(game.name)).toBeInTheDocument();
+    }
   });
 
   it("should show empty state when no games are available", () => {
