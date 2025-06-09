@@ -68,7 +68,7 @@ export default function GameCard({
         </Styled.GameSecondaryInfo>
 
         <Styled.Button onClick={handleClick} variant="outlined">
-          Ver mais
+          Show more
         </Styled.Button>
       </Styled.GameCardContent>
     </Styled.GameCard>

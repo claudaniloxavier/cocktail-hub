@@ -53,7 +53,7 @@ export default function Navbar() {
           <IconButton
             size="large"
             color="default"
-            aria-label="profile"
+            aria-label="back"
             onClick={handleBack}
             sx={{ pl: 0 }}
           >

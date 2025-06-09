@@ -22,7 +22,7 @@ export default function GameDetailSkeleton() {
         height={isMobile ? 180 : 595}
       />
 
-      <Styled.Card>
+      <Styled.Card data-testid="game-detail-skeleton">
         {!isMobile && <Skeleton variant="text" height={48} width="80%" />}
 
         <Skeleton variant="text" height={20} width="20%" />
